@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Welcome from "./Welcome";
+import Home from "./components/Home";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Welcome name={"Teri"} />
+		<Home />
 	</React.StrictMode>,
 	document.getElementById("root")
 );
