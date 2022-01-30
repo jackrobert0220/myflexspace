@@ -15,12 +15,20 @@ class Dopeness extends Component {
 		});
 	};
 
+	//decreaseDopeness method
+	decreaseDopeness = () => {
+		let lessDope = this.state.dopenessCount - 1;
+		this.setState({
+			dopenessCount: lessDope,
+		});
+	};
+
 	render() {
 		return (
 			<div>
-				<button onClick={this.increaseDopeness}>
-					Dopeness: {this.state.dopenessCount}
-				</button>
+				<button onClick={this.increaseDopeness}>Increase Dopeness</button>
+				<span>Dopeness: {this.state.dopenessCount}</span>
+				<button onClick={this.decreaseDopeness}>Decrease Dopeness</button>
 			</div>
 		);
 	}
