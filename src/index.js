@@ -1,13 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Home from "./components/Home";
+import Home from "./pages/HomePage";
 import reportWebVitals from "./reportWebVitals";
+import {BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Home />
-	</React.StrictMode>,
+	//browser router helps keep UI in sync with the URLS, and best practice to wrap BrowserRouter at the highest level in the application (for us this is index.js~)
+	<BrowserRouter>
+		<React.StrictMode>
+			<Home />
+		</React.StrictMode>
+	</BrowserRouter>,
 	document.getElementById("root")
 );
 
