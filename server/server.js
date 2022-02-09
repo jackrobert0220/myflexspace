@@ -12,7 +12,7 @@ const app = express();
 const config = require("@myflexspace/config");
 
 /* ==== Middleware ==== */
-app.use(express.static(path.json("build")))
+app.use(express.static(path.join("build")));
 
 /* ====  Routes & Controllers  ==== */
 app.all("/api/*", (req, res, next) =>{
