@@ -1,11 +1,11 @@
 import React from "react";
 import Post from "../../components/Post";
 import Welcome from "../../components/Welcome";
+import PostForm from "../../components/PostForm";
 import NavBar from "../../components/NavBar";
 import ProfilePage from "../../pages/ProfilePage";
 import HomiesPage from "../../pages/HomiesPage";
-import {Routes, Route} from 'react-router-dom';
-
+import { Routes, Route } from "react-router-dom";
 
 const post = {
 	title: "Eff Off Zuck",
@@ -18,15 +18,27 @@ function Home(props) {
 		<div>
 			<NavBar />
 			<Routes>
-                <Route path="homies" element={<HomiesPage />}> </Route>
-				<Route path="/" element={<Welcome name={"Teri"} location={"San Francisco"} />}></Route>
-				<Route path="posts" element={
-									<Post 
-										title={post.title} 
-										author={post.author} 
-										body={post.body} />} >
+				<Route path="homies" element={<HomiesPage />}>
+					{" "}
 				</Route>
-                <Route path="profile" element={<ProfilePage />}> </Route>
+				<Route
+					path="/"
+					element={
+						<>
+							<Welcome name={"Teri"} location={"San Francisco"} />
+							<PostForm />
+						</>
+					}
+				></Route>
+				<Route
+					path="posts"
+					element={
+						<Post title={post.title} author={post.author} body={post.body} />
+					}
+				></Route>
+				<Route path="profile" element={<ProfilePage />}>
+					{" "}
+				</Route>
 			</Routes>
 		</div>
 	);

@@ -1,24 +1,14 @@
 //Welcome Component
-// bring in React from React
-import React from "react";
-import Dopeness from "../Dopeness";
 
 // define our Welcome functional component
-function Welcome(props) {
+const Welcome = () => {
 	// what should the component return
 	return (
 		// Make sure to return some UI
 		<div>
-			<h1>Welcome to MyFlexSpace, {props.name}!</h1>
-			<p>
-				You are located in<h3>{props.location}</h3>
-			</p>
-			<p>
-				Your Dopeness level is
-				<Dopeness />
-			</p>
+			<h1>Welcome to MyFlexSpace, 1026!</h1>
 		</div>
 	);
-}
+};
 
 export default Welcome;
