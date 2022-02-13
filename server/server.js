@@ -1,30 +1,32 @@
 const path = require("path");
-require("dotenv").config({path: '../.env'})
+require("dotenv").config({ path: "../.env" });
 /* ==== External Modules ==== */
 const express = require("express");
 //DONT FORGET TO INSTALL METHOD-OVERRIDE INSIDE OF SERVER/
-const cors = require("cors")
+const cors = require("cors");
 /* ==== Internal Modules ==== */
 
 /* ==== Instanced Modules  ==== */
 const app = express();
-const routes = require("./routes")
+const routes = require("./routes");
 /* ==== Configuration ==== */
 const config = require("@myflexspace/config");
 
 /* ==== Middleware ==== */
+app.use(cors());
 app.use(express.static(path.join("build")));
 //helps us read body, including body with Postman and req.body
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
+// JSON parsing middleware
+// you need this for full stack crud front and back end! u gotta parse that json! do not forget this!!
+app.use(express.json());
 
 /* ====  Routes & Controllers  ==== */
-app.use("/api", routes)
+app.use("/api", routes);
 
-app.all("/api/*", (req, res, next) =>{
-	res.send("HOLD UP THESE ARE NOT THE APIS YOU ARE LOOKING FOR")
-})
-
+app.all("/api/*", (req, res, next) => {
+	res.send("HOLD UP THESE ARE NOT THE APIS YOU ARE LOOKING FOR");
+});
 
 //MAGICAL FULL STACK MIDDLEWARE
 //This targets anything that is NOT an "api" route, therefore it will be handled by React Router! The API routes must hit first, order matters, then use react via the React build directory
@@ -33,9 +35,8 @@ app.all("/api/*", (req, res, next) =>{
 // This literally hands over control to react
 
 app.use((req, res, next) => {
-	res.sendFile(path.join(__dirname, "build", "index.html"))
-})
-
+	res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 /* ====  Server Listener  ==== */
 app.listen(config.PORT, () => {
