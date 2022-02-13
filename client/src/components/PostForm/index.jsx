@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { func } from "prop-types";
 import * as postService from "../../api/post.service";
 
-const PostForm = () => {
+const PostForm = ({ refreshPosts }) => {
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
 
@@ -10,6 +11,7 @@ const PostForm = () => {
 		let res = await postService.create(newPost).then(() => {
 			setTitle("");
 			setBody("");
+			refreshPosts();
 			console.log(newPost);
 		});
 
@@ -47,6 +49,10 @@ const PostForm = () => {
 			<button onClick={handleSubmit}> Add Post, Homie + </button>
 		</div>
 	);
+};
+
+PostForm.propTypes = {
+	refreshPosts: func,
 };
 
 export default PostForm;
