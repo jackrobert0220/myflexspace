@@ -10,6 +10,22 @@ const index = (req, res) => {
     })
 }
 
+const show = async (req, res) => {
+    try {
+        const foundUser = await db.User.findById(req.userId)
+        return res.status(200).json({
+            message: "HUZZUH!",
+            data: foundUser
+        })
+    } catch (error) {
+        console.log(error)
+        return res
+            .status(500)
+            .json({message: "Interanl Server Error. whoopsies :((("})
+    }
+}
+
 module.exports = {
     index,
+    show
 }
